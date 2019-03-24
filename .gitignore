@@ -1,0 +1,18 @@
+# Created by Team C4
+
+# Compiled class file
+*.class
+
+# Log File
+*.log
+
+# Package Files #
+*.jar
+*.ear
+*.war
+*.zip
+*.tar.gz
+*.rar
+
+.idea
+*.iml
