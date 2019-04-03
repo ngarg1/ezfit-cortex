@@ -1,6 +1,6 @@
-package api_frontend;
+package main.api_frontend;
 
-import workout_analysis_server.WorkoutAnalysisServer;
+import common.BufferHandler;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.StringTokenizer;
-import java.util.stream.Collectors;
 
 public class APIFrontendServer implements Runnable {
     static final int PORT = 8080;
@@ -34,8 +33,6 @@ public class APIFrontendServer implements Runnable {
         try {
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Server Started\n Listening for connections on port: " + PORT);
-
-            WorkoutAnalysisServer workoutAnalysisServer = new WorkoutAnalysisServer();
 
             while (true) {
                 APIFrontendServer apiFrontendServer = new APIFrontendServer(serverSocket.accept());

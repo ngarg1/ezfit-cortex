@@ -1,4 +1,4 @@
-package api_frontend;
+package main.api_frontend;
 
 public class WorkoutRequestHandler {
 
