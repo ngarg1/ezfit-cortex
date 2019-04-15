@@ -26,8 +26,8 @@ public class APIFrontendServer implements Runnable {
     private BufferedReader workoutServerInput;
     private BufferedOutputStream workoutServerOutput;
 
-    private AtomicBoolean workoutInitiated = new AtomicBoolean(false);
-    private AtomicBoolean piConnected = new AtomicBoolean(false);
+    private static AtomicBoolean workoutInitiated = new AtomicBoolean(false);
+    private static AtomicBoolean piConnected = new AtomicBoolean(false);
 
     public APIFrontendServer(Socket connect) {
         this.connect = connect;
