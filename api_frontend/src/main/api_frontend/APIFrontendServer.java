@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.StringTokenizer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class APIFrontendServer implements Runnable {
     static final int PORT = 8080;
@@ -24,6 +25,9 @@ public class APIFrontendServer implements Runnable {
     private Socket workoutServerSocket;
     private BufferedReader workoutServerInput;
     private BufferedOutputStream workoutServerOutput;
+
+    private AtomicBoolean workoutInitiated = new AtomicBoolean(false);
+    private AtomicBoolean piConnected = new AtomicBoolean(false);
 
     public APIFrontendServer(Socket connect) {
         this.connect = connect;
@@ -58,24 +62,23 @@ public class APIFrontendServer implements Runnable {
 
         try {
             input = new BufferedReader(new InputStreamReader(connect.getInputStream()));
-            outputHeaders = new PrintWriter(connect.getOutputStream());
             dataOut = new BufferedOutputStream(connect.getOutputStream());
 
             while(true) {
-                //Wait for new request
                 while(!input.ready()) {
                     continue;
                 }
 
                 String request = input.readLine();
-                StringTokenizer requestParser = new StringTokenizer(request);
 
-                String requestMethod = requestParser.nextToken().toUpperCase();
+                StringTokenizer requestParser = new StringTokenizer(request);
+                requestParser.nextToken();
+
                 String uri = requestParser.nextToken().toLowerCase();
 
                 String response = "";
                 if(uri.startsWith(CORE_REQUEST)) {
-                    response = CoreRequestHandler.handle(uri, input, dataOut);
+                    response = CoreRequestHandler.handle(uri, input, workoutInitiated, piConnected);
                 } else if(uri.startsWith(WORKOUT_REQUEST)) {
                     //Pass off to workout request handler
                     sendToWorkoutServer(request, input);
@@ -84,8 +87,8 @@ public class APIFrontendServer implements Runnable {
 
                 dataOut.write(response.getBytes(), 0, response.getBytes().length);
                 dataOut.flush();
+                BufferHandler.readAllLines(input);
             }
-
         } catch (IOException ioe) {
             System.err.println("Input Reading Error: " + ioe.getMessage());
         }
@@ -113,7 +116,7 @@ public class APIFrontendServer implements Runnable {
             workoutServerOutput.write(request.getBytes(), 0, request.getBytes().length);
             workoutServerOutput.flush();
         } catch (IOException ioe) {
-            System.err.println("Failed to send request to Workout Analysis Server" + ioe.getMessage());
+            System.out.println("Failed to send request to Workout Analysis Server" + ioe.getMessage());
             return false;
         }
 
