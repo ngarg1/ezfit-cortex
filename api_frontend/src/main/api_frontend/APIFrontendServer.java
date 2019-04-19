@@ -80,8 +80,8 @@ public class APIFrontendServer implements Runnable {
                 if(uri.startsWith(CORE_REQUEST)) {
                     response = CoreRequestHandler.handle(uri, input, workoutInitiated, piConnected);
                 } else if(uri.startsWith(WORKOUT_REQUEST)) {
-                    //Pass off to workout request handler
                     sendToWorkoutServer(request, input);
+
                     response = CoreRequestHandler.getSample200Reponse("Workout Request"); //TEMPORARY
                 }
 

@@ -2,6 +2,7 @@ package main.workout_analysis_server;
 
 
 import common.BufferHandler;
+import common.SlidingList;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -28,6 +29,26 @@ public class WorkoutAnalysisServer implements Runnable {
         Thread frameRequestConsumerThread = new Thread(frameRequestConsumer);
         System.out.println("Starting Frame Analysis Server");
         frameRequestConsumerThread.start();
+
+        SlidingList<Integer> integerSlidingList = new SlidingList<>(5);
+        integerSlidingList.add(1);
+        System.out.println(integerSlidingList.getList());
+        integerSlidingList.add(2);
+        System.out.println(integerSlidingList.getList());
+        integerSlidingList.add(3);
+        System.out.println(integerSlidingList.getList());
+        integerSlidingList.add(4);
+        System.out.println(integerSlidingList.getList());
+        integerSlidingList.add(5);
+        System.out.println(integerSlidingList.getList());
+        integerSlidingList.add(6);
+        System.out.println(integerSlidingList.getList());
+        integerSlidingList.add(7);
+        System.out.println(integerSlidingList.getList());
+        System.out.println(integerSlidingList.countList());
+        integerSlidingList.add(6);
+        System.out.println(integerSlidingList.countList());
+
     }
 
     @Override
