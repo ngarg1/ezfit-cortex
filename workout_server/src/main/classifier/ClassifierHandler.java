@@ -29,7 +29,7 @@ public class ClassifierHandler {
         try {
             invokeEndpointRequest.setBody(
                     ByteBuffer.wrap(
-                            BodyDataSetSerializer.serialize(bodyDataSet).getBytes("UTF-8")
+                            BodyDataSetSerializer.serialize(bodyDataSet).toString().getBytes("UTF-8")
                     )
             );
         } catch (UnsupportedEncodingException uee) {

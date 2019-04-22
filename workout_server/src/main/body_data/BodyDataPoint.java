@@ -1,25 +1,34 @@
 package main.body_data;
 
 public class BodyDataPoint {
-    private int x;
-    private int y;
-    private int confidence;
+    private double x;
+    private double y;
+    private double confidence;
 
-    public BodyDataPoint(int x, int y, int confidence) {
+    public BodyDataPoint(double x, double y, double confidence) {
         this.x = x;
         this.y = y;
         this.confidence = confidence;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public int getConfidence() {
+    public double getConfidence() {
         return confidence;
+    }
+
+    @Override
+    public String toString() {
+        return "BodyDataPoint{" +
+                "x=" + x +
+                ", y=" + y +
+                ", confidence=" + confidence +
+                '}';
     }
 }

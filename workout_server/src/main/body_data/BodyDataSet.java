@@ -57,4 +57,19 @@ public class BodyDataSet {
     public BodyDataPoint getAnkle() {
         return ankle;
     }
+
+    @Override
+    public String toString() {
+        return "BodyDataSet{" +
+                "nose=" + nose +
+                ", neck=" + neck +
+                ", shoulder=" + shoulder +
+                ", elbow=" + elbow +
+                ", wrist=" + wrist +
+                ", hip=" + hip +
+                ", knee=" + knee +
+                ", ankle=" + ankle +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
