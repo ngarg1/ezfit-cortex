@@ -30,7 +30,7 @@ public class FrameAnalyzer {
         }
     }
 
-    public FrameAnalysis analysis(BodyDataSet bodyDataSet) {
+    public FrameAnalysis analyze(BodyDataSet bodyDataSet) {
         FormAnalysis formAnalysis = formCorrector.analyze(bodyDataSet);
         boolean isNewRep = repCounter.analyze(bodyDataSet);
         return new FrameAnalysis(formAnalysis, isNewRep);

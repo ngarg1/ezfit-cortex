@@ -21,8 +21,6 @@ public class SlidingList<T> {
     }
 
     public boolean add(T listObject) {
-        //Return true if this add bumped another Set out
-        //Return false if added without bump
         if(slidingList.size() == capacity) {
             slidingList.remove(0);
             slidingList.add(listObject);
