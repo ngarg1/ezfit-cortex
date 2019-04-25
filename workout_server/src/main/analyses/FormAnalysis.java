@@ -35,4 +35,13 @@ public class FormAnalysis {
     public void addNotes(String note) {
         notes.add(note);
     }
+
+    @Override
+    public String toString() {
+        return "FormAnalysis{" +
+                "formQuality=" + formQuality +
+                ", exercise=" + exercise +
+                ", notes=" + notes +
+                '}';
+    }
 }

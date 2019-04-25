@@ -42,6 +42,7 @@ public class FrameRequestConsumer implements Runnable {
 
             bodyDataSet = BodyDataSetSerializer.deserializeFrameRequest(request);
             frameExercise = classifierHandler.classify(bodyDataSet);
+            System.out.println(frameExercise);
             exerciseList.add(frameExercise);
 
             switch(SetStateDecider.getSetState(currentExercise, exerciseList)) {
@@ -57,7 +58,7 @@ public class FrameRequestConsumer implements Runnable {
                         currentSetAnalysis.addFormAnalysis(frameAnalyzer.newRep());
                     }
 
-                    frontendHandler.sendDisplayRequest(frameAnalysis);
+                    frontendHandler.sendDisplayRequest(frameExercise);
                     break;
                 case SAME_SET:
                     System.out.println("Same Set -- Normal Analysis");
@@ -67,7 +68,7 @@ public class FrameRequestConsumer implements Runnable {
                         currentSetAnalysis.addFormAnalysis(frameAnalyzer.newRep());
                     }
 
-                    frontendHandler.sendDisplayRequest(frameAnalysis);
+                    frontendHandler.sendDisplayRequest(frameExercise);
                     break;
                 case NEW_SET:
                     System.out.println("New Set -- Nice job big guy");

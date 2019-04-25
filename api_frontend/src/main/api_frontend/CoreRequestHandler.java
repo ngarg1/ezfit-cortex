@@ -79,6 +79,7 @@ public class CoreRequestHandler {
         sampleResponse.append(body.getBytes().length);
         sampleResponse.append("\r\n\r\n");
         sampleResponse.append(body);
+        sampleResponse.append("\r\n\r\n");
 
         return sampleResponse.toString();
     }

@@ -16,4 +16,12 @@ public class FrameAnalysis {
     public boolean isNewRep() {
         return isNewRep;
     }
+
+    @Override
+    public String toString() {
+        return "FrameAnalysis{" +
+                "formAnalysis=" + formAnalysis +
+                ", isNewRep=" + isNewRep +
+                '}';
+    }
 }

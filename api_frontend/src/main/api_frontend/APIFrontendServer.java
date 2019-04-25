@@ -87,6 +87,7 @@ public class APIFrontendServer implements Runnable {
 
                 dataOut.write(response.getBytes(), 0, response.getBytes().length);
                 dataOut.flush();
+                System.out.println("response sent: " + response);
                 BufferHandler.readAllLines(input);
             }
         } catch (IOException ioe) {
