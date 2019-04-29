@@ -17,4 +17,4 @@
 .idea
 *.iml
 *.MF
-*DS_Store
+*.DS_Store
