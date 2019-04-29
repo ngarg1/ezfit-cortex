@@ -58,6 +58,48 @@ public class BodyDataSet {
         return ankle;
     }
 
+    public void normalize(){
+        double offsetX = hip.getX();
+        double offsetY = hip.getY();
+
+        if( ankle.getConfidence() == 0) { ankle = new BodyDataPoint(0,0,0); }
+        else {
+            ankle = new BodyDataPoint(ankle.getX() - offsetX, ankle.getY() - offsetY, ankle.getConfidence());
+        }
+
+        if( knee.getConfidence() == 0) { knee = new BodyDataPoint(0,0,0); }
+        else {
+            knee = new BodyDataPoint(knee.getX() - offsetX, knee.getY() - offsetY, knee.getConfidence());
+        }
+
+        hip = new BodyDataPoint(0, 0, hip.getConfidence());
+
+        if( wrist.getConfidence() == 0) { wrist = new BodyDataPoint(0,0,0); }
+        else {
+            wrist = new BodyDataPoint(wrist.getX() - offsetX, wrist.getY() - offsetY, wrist.getConfidence());
+        }
+
+        if( elbow.getConfidence() == 0) { elbow = new BodyDataPoint(0,0,0); }
+        else {
+            elbow = new BodyDataPoint(elbow.getX() - offsetX, elbow.getY() - offsetY, elbow.getConfidence());
+        }
+
+        if( shoulder.getConfidence() == 0) { shoulder = new BodyDataPoint(0,0,0); }
+        else {
+            shoulder = new BodyDataPoint(shoulder.getX() - offsetX, shoulder.getY() - offsetY, shoulder.getConfidence());
+        }
+
+        if( neck.getConfidence() == 0) { neck = new BodyDataPoint(0,0,0); }
+        else {
+            neck = new BodyDataPoint(neck.getX() - offsetX, neck.getY() - offsetY, neck.getConfidence());
+        }
+
+        if( nose.getConfidence() == 0) { nose = new BodyDataPoint(0,0,0); }
+        else {
+            nose = new BodyDataPoint(nose.getX() - offsetX, nose.getY() - offsetY, nose.getConfidence());
+        }
+    }
+
     @Override
     public String toString() {
         return "BodyDataSet{" +
