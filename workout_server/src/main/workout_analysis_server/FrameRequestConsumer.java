@@ -43,7 +43,9 @@ public class FrameRequestConsumer implements Runnable {
             bodyDataSet = BodyDataSetSerializer.deserializeFrameRequest(request);
             frameExercise = classifierHandler.classify(bodyDataSet);
             System.out.println(frameExercise);
+
             exerciseList.add(frameExercise);
+
 
             switch(SetStateDecider.getSetState(currentExercise, exerciseList)) {
                 case INITIAL:

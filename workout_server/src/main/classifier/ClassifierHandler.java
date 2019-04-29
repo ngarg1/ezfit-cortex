@@ -11,7 +11,6 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-import scala.util.parsing.json.JSON;
 
 public class ClassifierHandler {
     private static final String CLASSIFIER_URL_STRING = "https://xyq1ojbctg.execute-api.us-east-1.amazonaws.com/api";
@@ -28,6 +27,7 @@ public class ClassifierHandler {
         HttpEntity body = null;
         try {
             body = new ByteArrayEntity(BodyDataSetSerializer.serialize(bodyDataSet).toString().getBytes("UTF-8"));
+            System.out.println(BodyDataSetSerializer.serialize(bodyDataSet).toString());
         } catch (Exception e) {
             System.err.println("Error serializing Body Data " + e.getMessage());
         }

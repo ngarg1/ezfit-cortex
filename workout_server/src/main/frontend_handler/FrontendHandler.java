@@ -3,7 +3,6 @@ package main.frontend_handler;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import main.analyses.FrameAnalysis;
 import main.frame_analyzer.Exercise;
 
 public class FrontendHandler {

@@ -32,8 +32,7 @@ class BodyDataSetSerializerTest {
         System.out.println(SITUP_BIG_JSON);
         BodyDataSet situpBodyData = BodyDataSetSerializer.deserializeJSON(SITUP_BIG_JSON);
         System.out.println(situpBodyData);
-        System.out.println(BodyDataSetSerializer.serialize(situpBodyData));
-
+       // System.out.println(BodyDataSetSerializer.serialize(situpBodyData));
         System.out.println(BodyDataSetSerializer.deserializeFrameRequest(FRAME_REQUEST));
     }
 }
