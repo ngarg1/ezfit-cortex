@@ -1,6 +1,7 @@
 package main.body_data;
 
 import java.util.Date;
+import java.lang.Math;
 
 public class BodyDataSet {
     private BodyDataPoint nose, neck, shoulder, elbow, wrist, hip, knee, ankle;
@@ -26,17 +27,13 @@ public class BodyDataSet {
         this.timestamp = timestamp;
     }
 
-    public BodyDataPoint getNose() {
-        return nose;
-    }
+    public BodyDataPoint getNose() { return nose; }
 
     public BodyDataPoint getNeck() {
         return neck;
     }
 
-    public BodyDataPoint getShoulder() {
-        return shoulder;
-    }
+    public BodyDataPoint getShoulder() { return shoulder; }
 
     public BodyDataPoint getElbow() {
         return elbow;
@@ -113,5 +110,21 @@ public class BodyDataSet {
                 ", ankle=" + ankle +
                 ", timestamp=" + timestamp +
                 '}';
+    }
+
+
+    private double getAngle(BodyDataPoint V, BodyDataPoint A, BodyDataPoint B){ //Find angle AVB
+        double result = Math.atan2(B.getY() - V.getY(), B.getX() - V.getX()) -
+                        atan2(A.getY() - V.getY(), A.getX() - V.getX());
+
+        return Math.toDegrees(result);
+    }
+
+    public double getHipAngle(){
+        return getAngle(hip, knee, shoulder);
+    }
+
+    public double getKneeAngle(){
+        return getAngle(knee, hip, ankle);
     }
 }
