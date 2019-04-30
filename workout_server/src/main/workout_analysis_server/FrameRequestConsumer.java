@@ -12,6 +12,8 @@ import main.frame_analyzer.FrameAnalyzer;
 import main.frontend_handler.FrontendHandler;
 import main.sets.SetStateDecider;
 
+import java.util.Map;
+
 public class FrameRequestConsumer implements Runnable {
     static final int EXERCISE_LIST_CAPACITY = 5;
 
@@ -75,6 +77,8 @@ public class FrameRequestConsumer implements Runnable {
                 case NEW_SET:
                     System.out.println("New Set -- Nice job big guy");
 
+                    workoutAnalysis.addSetAnalysis(currentSetAnalysis);
+                    //currentSetAnalysis = new SetAnalysis(exerciseList.getMostFrequentKey());
 
                     break;
                 case UNKNOWN:

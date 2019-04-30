@@ -49,4 +49,9 @@ public class SlidingList<T> {
 
         return countMap;
     }
+
+    public T getMostFrequentKey() {
+        Map<T, Integer> countMap = countList();
+        return countMap.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
+    }
 }
