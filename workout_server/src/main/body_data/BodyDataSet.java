@@ -1,4 +1,4 @@
-package main.body_data;
+package body_data;
 
 import java.util.Date;
 

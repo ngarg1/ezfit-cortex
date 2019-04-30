@@ -1,7 +1,7 @@
-package main.classifier;
+package classifier;
 
-import main.body_data.BodyDataSet;
-import main.body_data.BodyDataSetSerializer;
+import body_data.BodyDataSet;
+import body_data.BodyDataSetSerializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

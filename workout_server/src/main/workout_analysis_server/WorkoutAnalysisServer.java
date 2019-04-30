@@ -1,4 +1,4 @@
-package main.workout_analysis_server;
+package workout_analysis_server;
 
 
 import common.BufferHandler;

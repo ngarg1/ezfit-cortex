@@ -1,6 +1,7 @@
-package main.analyses;
+package analyses;
 
-import main.frame_analyzer.Exercise;
+
+import frame_analyzer.Exercise;
 
 import java.util.ArrayList;
 

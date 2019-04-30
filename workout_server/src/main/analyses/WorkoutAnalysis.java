@@ -1,4 +1,4 @@
-package main.analyses;
+package analyses;
 
 import java.util.ArrayList;
 

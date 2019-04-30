@@ -1,4 +1,4 @@
-package main.analyses;
+package analyses;
 
 public class FrameAnalysis {
     private FormAnalysis formAnalysis;

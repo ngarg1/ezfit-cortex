@@ -1,8 +1,8 @@
-package main.frame_analyzer.rep_counters;
+package frame_analyzer.rep_counters;
 
-import main.body_data.BodyDataSet;
-import main.frame_analyzer.Exercise;
-import main.frame_analyzer.RepCounter;
+import body_data.BodyDataSet;
+import frame_analyzer.Exercise;
+import frame_analyzer.RepCounter;
 
 public class SitupRepCounter extends RepCounter {
     public SitupRepCounter() {

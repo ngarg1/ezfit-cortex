@@ -1,9 +1,9 @@
-package main.frontend_handler;
+package frontend_handler;
 
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import main.frame_analyzer.Exercise;
+import frame_analyzer.Exercise;
 
 public class FrontendHandler {
     private final String CLIENT_REGION = "us-east-1";

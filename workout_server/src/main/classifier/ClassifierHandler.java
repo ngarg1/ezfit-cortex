@@ -1,8 +1,8 @@
-package main.classifier;
+package classifier;
 
-import main.body_data.BodyDataSet;
-import main.body_data.BodyDataSetSerializer;
-import main.frame_analyzer.Exercise;
+import body_data.BodyDataSet;
+import body_data.BodyDataSetSerializer;
+import frame_analyzer.Exercise;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;

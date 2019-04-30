@@ -1,18 +1,17 @@
-package main.workout_analysis_server;
+package workout_analysis_server;
 
+import analyses.FrameAnalysis;
+import analyses.SetAnalysis;
+import analyses.WorkoutAnalysis;
+import body_data.BodyDataSet;
+import body_data.BodyDataSetSerializer;
+import classifier.ClassifierHandler;
 import common.SlidingList;
-import main.analyses.FrameAnalysis;
-import main.analyses.SetAnalysis;
-import main.analyses.WorkoutAnalysis;
-import main.body_data.BodyDataSet;
-import main.body_data.BodyDataSetSerializer;
-import main.classifier.ClassifierHandler;
-import main.frame_analyzer.Exercise;
-import main.frame_analyzer.FrameAnalyzer;
-import main.frontend_handler.FrontendHandler;
-import main.sets.SetStateDecider;
+import frame_analyzer.Exercise;
+import frame_analyzer.FrameAnalyzer;
+import frontend_handler.FrontendHandler;
+import sets.SetStateDecider;
 
-import java.util.Map;
 
 public class FrameRequestConsumer implements Runnable {
     static final int EXERCISE_LIST_CAPACITY = 5;
