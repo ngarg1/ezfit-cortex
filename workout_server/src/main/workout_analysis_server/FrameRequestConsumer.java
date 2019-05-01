@@ -12,6 +12,8 @@ import frame_analyzer.FrameAnalyzer;
 import frontend_handler.FrontendHandler;
 import sets.SetStateDecider;
 
+import java.util.Map;
+
 
 public class FrameRequestConsumer implements Runnable {
     static final int EXERCISE_LIST_CAPACITY = 5;
@@ -38,16 +40,24 @@ public class FrameRequestConsumer implements Runnable {
         FrontendHandler frontendHandler = new FrontendHandler();
 
         while(true) {
+            System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
             String request = workoutAnalysisServer.getRequest();
             System.out.println("Consuming Request: " + request);
 
             bodyDataSet = BodyDataSetSerializer.deserializeFrameRequest(request);
+
+            if(bodyDataSet == null) {
+                continue;
+            }
+
             frameExercise = classifierHandler.classify(bodyDataSet);
-            System.out.println(frameExercise);
+            System.out.println("Exercise: " + frameExercise);
 
-            exerciseList.add(frameExercise);
+            frontendHandler.sendDisplayRequest(frameExercise);
+            //exerciseList.add(frameExercise);
 
 
+            /*
             switch(SetStateDecider.getSetState(currentExercise, exerciseList)) {
                 case INITIAL:
                     System.out.println("First Frame Request");
@@ -76,15 +86,21 @@ public class FrameRequestConsumer implements Runnable {
                 case NEW_SET:
                     System.out.println("New Set -- Nice job big guy");
 
-                    workoutAnalysis.addSetAnalysis(currentSetAnalysis);
-                    //currentSetAnalysis = new SetAnalysis(exerciseList.getMostFrequentKey());
+                    Map<Exercise, Integer> countMap = exerciseList.countList();
+                    Exercise newExercise = countMap.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
 
+                    workoutAnalysis.addSetAnalysis(currentSetAnalysis);
+                    currentSetAnalysis = new SetAnalysis(newExercise);
+                    frameAnalyzer = new FrameAnalyzer(newExercise);
+                    currentExercise = newExercise;
+
+                    frontendHandler.sendDisplayRequest(frameExercise);
                     break;
                 case UNKNOWN:
                     System.out.println("Oopsie! Unknown State reached");
 
                     break;
-            }
+            }*/
         }
     }
 }

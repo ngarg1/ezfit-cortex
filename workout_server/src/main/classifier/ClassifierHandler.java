@@ -39,7 +39,6 @@ public class ClassifierHandler {
         } catch (Exception e) {
             System.err.println("Error sending classifier request " + e.getMessage());
         }
-        System.out.println("\n\n--------- Raw Results ----------");
         String responseString = "";
         try {
             responseString = EntityUtils.toString(response.getEntity());
