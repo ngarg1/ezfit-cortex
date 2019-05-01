@@ -115,7 +115,7 @@ public class BodyDataSet {
 
     private double getAngle(BodyDataPoint V, BodyDataPoint A, BodyDataPoint B){ //Find angle AVB
         double result = Math.atan2(B.getY() - V.getY(), B.getX() - V.getX()) -
-                        atan2(A.getY() - V.getY(), A.getX() - V.getX());
+                        Math.atan2(A.getY() - V.getY(), A.getX() - V.getX());
 
         return Math.toDegrees(result);
     }
