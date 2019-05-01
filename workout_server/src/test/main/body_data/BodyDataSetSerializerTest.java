@@ -1,5 +1,7 @@
 package main.body_data;
 
+import body_data.BodyDataSet;
+import body_data.BodyDataSetSerializer;
 import org.junit.jupiter.api.Test;
 
 class BodyDataSetSerializerTest {

@@ -1,9 +1,11 @@
 package main.sets;
 
 import common.SlidingList;
-import main.frame_analyzer.Exercise;
+import frame_analyzer.Exercise;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import sets.SetState;
+import sets.SetStateDecider;
 
 import static org.junit.jupiter.api.Assertions.*;
 
