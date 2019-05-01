@@ -17,14 +17,19 @@ public class PlankFormCorrector extends FormCorrector {
 
     @Override
     public FormAnalysis analyze(BodyDataSet bodyDataSet) {
+
         FormAnalysis FA = new FormAnalysis(Excersize.PLANK);
         hipAngle = bodyDataSet.getHipAngle();
+
         if( Math.abs(hipAngle) < TARGET_HIP_ANGLE - LENIENCY ) {
+
             if (hipAngle > 0) {
-                FA.addNotes("Hips too low");
+                FA.addNotes("Yo butt too low");
             } else {
-                FA.addNotes("Hips too high");
+                FA.addNotes("Yo butt too high");
             }
+        }else{
+            FA.addNotes("Lookin good big boy")
         }
         return FA;
     }
