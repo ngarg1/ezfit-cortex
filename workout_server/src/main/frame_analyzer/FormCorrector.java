@@ -1,8 +1,8 @@
-package main.frame_analyzer;
+package frame_analyzer;
 
-import main.analyses.FormAnalysis;
+import analyses.FormAnalysis;
 import common.SlidingList;
-import main.body_data.BodyDataSet;
+import body_data.BodyDataSet;
 
 public abstract class FormCorrector {
     FormAnalysis currentRepForm;

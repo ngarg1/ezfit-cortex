@@ -3,7 +3,6 @@ package main.api_frontend;
 
 import common.BufferHandler;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;

@@ -1,7 +1,8 @@
-package main.body_data;
+package body_data;
 
 import common.BufferHandler;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -56,28 +57,33 @@ public class BodyDataSetSerializer {
     }
 
     public static BodyDataSet deserializeJSON(String bodyDataJSON) {
-        JSONObject obj = new JSONObject(bodyDataJSON);
-		JSONArray data = (obj.getJSONArray(PEOPLE_KEY).getJSONObject(0).getJSONArray(BODY_DATA_POINTS_KEY));
+		try {
+			JSONObject obj = new JSONObject(bodyDataJSON);
+			JSONArray data = (obj.getJSONArray(PEOPLE_KEY).getJSONObject(0).getJSONArray(BODY_DATA_POINTS_KEY));
 
-		BodyDataPoint nose = new BodyDataPoint(data.getDouble(0), data.getDouble(1), data.getDouble(2));
-		BodyDataPoint neck = new BodyDataPoint(data.getDouble(3), data.getDouble(4), data.getDouble(5));
-		BodyDataPoint shoulder = new BodyDataPoint(data.getDouble(6), data.getDouble(7), data.getDouble(8));
-		BodyDataPoint elbow = new BodyDataPoint(data.getDouble(9), data.getDouble(10), data.getDouble(11));
-		BodyDataPoint wrist = new BodyDataPoint(data.getDouble(12), data.getDouble(13), data.getDouble(14));
-		BodyDataPoint hip = new BodyDataPoint(data.getDouble(15), data.getDouble(16), data.getDouble(17));
-		BodyDataPoint knee = new BodyDataPoint(data.getDouble(18), data.getDouble(19), data.getDouble(20));
-		BodyDataPoint ankle = new BodyDataPoint(data.getDouble(21), data.getDouble(22), data.getDouble(23));
+			BodyDataPoint nose = new BodyDataPoint(data.getDouble(0), data.getDouble(1), data.getDouble(2));
+			BodyDataPoint neck = new BodyDataPoint(data.getDouble(3), data.getDouble(4), data.getDouble(5));
+			BodyDataPoint shoulder = new BodyDataPoint(data.getDouble(15), data.getDouble(16), data.getDouble(17));
+			BodyDataPoint elbow = new BodyDataPoint(data.getDouble(18), data.getDouble(19), data.getDouble(20));
+			BodyDataPoint wrist = new BodyDataPoint(data.getDouble(21), data.getDouble(22), data.getDouble(23));
+			BodyDataPoint hip = new BodyDataPoint(data.getDouble(36), data.getDouble(37), data.getDouble(38));
+			BodyDataPoint knee = new BodyDataPoint(data.getDouble(39), data.getDouble(40), data.getDouble(41));
+			BodyDataPoint ankle = new BodyDataPoint(data.getDouble(42), data.getDouble(43), data.getDouble(44));
 
-		BodyDataSet bds = new BodyDataSet(nose,neck,shoulder,elbow,wrist,hip,knee,ankle, new Date());
-
-        return bds;
+			BodyDataSet bds = new BodyDataSet(nose, neck, shoulder, elbow, wrist, hip, knee, ankle, new Date());
+			bds.normalize();
+			return bds;
+		} catch (JSONException je) {
+			System.out.println("No People in frame!");
+			return null;
+		}
     }
 
     public static BodyDataSet deserializeFrameRequest(String frameRequest) {
 		BufferedReader httpStringReader = new BufferedReader(new StringReader(frameRequest));
 		String line = "";
 		int newLineCount = 0;
-		while(newLineCount < 2) {
+		while(newLineCount < 1) {
 			try {
 				line = httpStringReader.readLine();
 			} catch (IOException ioe) {

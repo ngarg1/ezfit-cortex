@@ -1,4 +1,4 @@
-package main.body_data;
+package body_data;
 
 public class BodyDataPoint {
     private double x;

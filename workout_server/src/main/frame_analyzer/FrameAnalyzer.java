@@ -1,14 +1,15 @@
-package main.frame_analyzer;
+package frame_analyzer;
 
-import main.analyses.FormAnalysis;
-import main.analyses.FrameAnalysis;
-import main.body_data.BodyDataSet;
-import main.frame_analyzer.form_correctors.PlankFormCorrector;
-import main.frame_analyzer.form_correctors.SitupFormCorrector;
-import main.frame_analyzer.form_correctors.SquatFormCorrector;
-import main.frame_analyzer.rep_counters.PlankRepCounter;
-import main.frame_analyzer.rep_counters.SitupRepCounter;
-import main.frame_analyzer.rep_counters.SquatRepCounter;
+import analyses.FormAnalysis;
+import analyses.FrameAnalysis;
+import body_data.BodyDataSet;
+import frame_analyzer.form_correctors.PlankFormCorrector;
+import frame_analyzer.form_correctors.SitupFormCorrector;
+import frame_analyzer.form_correctors.SquatFormCorrector;
+import frame_analyzer.rep_counters.PlankRepCounter;
+import frame_analyzer.rep_counters.SitupRepCounter;
+import frame_analyzer.rep_counters.SquatRepCounter;
+
 
 public class FrameAnalyzer {
     private FormCorrector formCorrector;

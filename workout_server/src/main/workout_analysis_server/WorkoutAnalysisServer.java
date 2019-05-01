@@ -1,4 +1,4 @@
-package main.workout_analysis_server;
+package workout_analysis_server;
 
 
 import common.BufferHandler;
@@ -29,26 +29,6 @@ public class WorkoutAnalysisServer implements Runnable {
         Thread frameRequestConsumerThread = new Thread(frameRequestConsumer);
         System.out.println("Starting Frame Analysis Server");
         frameRequestConsumerThread.start();
-
-        SlidingList<Integer> integerSlidingList = new SlidingList<>(5);
-        integerSlidingList.add(1);
-        System.out.println(integerSlidingList.getList());
-        integerSlidingList.add(2);
-        System.out.println(integerSlidingList.getList());
-        integerSlidingList.add(3);
-        System.out.println(integerSlidingList.getList());
-        integerSlidingList.add(4);
-        System.out.println(integerSlidingList.getList());
-        integerSlidingList.add(5);
-        System.out.println(integerSlidingList.getList());
-        integerSlidingList.add(6);
-        System.out.println(integerSlidingList.getList());
-        integerSlidingList.add(7);
-        System.out.println(integerSlidingList.getList());
-        System.out.println(integerSlidingList.countList());
-        integerSlidingList.add(6);
-        System.out.println(integerSlidingList.countList());
-
     }
 
     @Override
@@ -73,14 +53,14 @@ public class WorkoutAnalysisServer implements Runnable {
                 }
 
                 request = BufferHandler.readAllLines(input);
-                System.out.println("Workout Server Received Request: " + request);
+                //System.out.println("Workout Server Received Request: " + request);
 
                 try {
                     frameRequests.put(request);
                 } catch (InterruptedException ie) {
                     System.err.println("Workout Server interrupted while queueing request: " + ie.getMessage());
                 }
-                System.out.println("Request Queue: " + frameRequests.toString());
+                //System.out.println("Request Queue: " + frameRequests.toString());
                 BufferHandler.readAllLines(input);
             }
 
@@ -91,7 +71,7 @@ public class WorkoutAnalysisServer implements Runnable {
 
     public String getRequest() {
         try {
-            System.out.println("Taking from QUEUE");
+            //System.out.println("Taking from QUEUE");
             return frameRequests.take();
         } catch (InterruptedException ie) {
             System.err.println("Workout Server interrupted while trying to provide request to consume: "

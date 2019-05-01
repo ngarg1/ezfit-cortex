@@ -1,9 +1,10 @@
-package main.frame_analyzer.form_correctors;
+package frame_analyzer.form_correctors;
 
-import main.analyses.FormAnalysis;
-import main.body_data.BodyDataSet;
-import main.frame_analyzer.Exercise;
-import main.frame_analyzer.FormCorrector;
+import analyses.FormAnalysis;
+import body_data.BodyDataSet;
+import frame_analyzer.Exercise;
+import frame_analyzer.FormCorrector;
+
 
 public class PlankFormCorrector extends FormCorrector {
 

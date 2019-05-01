@@ -1,7 +1,7 @@
-package main.sets;
+package sets;
 
 import common.SlidingList;
-import main.frame_analyzer.Exercise;
+import frame_analyzer.Exercise;
 
 import java.util.ArrayList;
 import java.util.Map;

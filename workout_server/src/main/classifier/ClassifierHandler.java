@@ -1,8 +1,8 @@
-package main.classifier;
+package classifier;
 
-import main.body_data.BodyDataSet;
-import main.body_data.BodyDataSetSerializer;
-import main.frame_analyzer.Exercise;
+import body_data.BodyDataSet;
+import body_data.BodyDataSetSerializer;
+import frame_analyzer.Exercise;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -39,7 +39,6 @@ public class ClassifierHandler {
         } catch (Exception e) {
             System.err.println("Error sending classifier request " + e.getMessage());
         }
-        System.out.println("\n\n--------- Raw Results ----------");
         String responseString = "";
         try {
             responseString = EntityUtils.toString(response.getEntity());

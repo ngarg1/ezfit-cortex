@@ -1,7 +1,7 @@
-package main.classifier;
+package classifier;
 
-import main.body_data.BodyDataSet;
-import main.body_data.BodyDataSetSerializer;
+import body_data.BodyDataSet;
+import body_data.BodyDataSetSerializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,11 +24,14 @@ class ClassifierHandlerTest {
 
     @Test
     void classify() {
-        //BodyDataSet situpBodyData = BodyDataSetSerializer.deserializeJSON(SITUP_BIG_JSON);
-        //System.out.println(classifierHandler.classify(situpBodyData));
-        //BodyDataSet squatBodyData = BodyDataSetSerializer.deserializeJSON(SQUAT_BIG_JSON);
-        //System.out.println(classifierHandler.classify(squatBodyData));
+        BodyDataSet situpBodyData = BodyDataSetSerializer.deserializeJSON(SITUP_BIG_JSON);
+        situpBodyData.normalize();
+        System.out.println(classifierHandler.classify(situpBodyData));
+        BodyDataSet squatBodyData = BodyDataSetSerializer.deserializeJSON(SQUAT_BIG_JSON);
+        squatBodyData.normalize();
+        System.out.println(classifierHandler.classify(squatBodyData));
         BodyDataSet plankBodyData = BodyDataSetSerializer.deserializeJSON(PLANK_BIG_JSON);
+        plankBodyData.normalize();
         System.out.println(classifierHandler.classify(plankBodyData));
     }
 }
