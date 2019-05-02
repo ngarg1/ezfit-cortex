@@ -23,9 +23,9 @@ public class PlankFormCorrector extends FormCorrector {
 
         if((Math.abs(hipAngle) - TARGET_HIP_ANGLE) < LENIENCY ) {
             if (hipAngle > 0) {
-                FA.addNotes("Yo butt too low");
-            } else {
                 FA.addNotes("Yo butt too high");
+            } else {
+                FA.addNotes("Yo butt too low");
             }
         }else{
             FA.addNotes("Lookin good big boy");
