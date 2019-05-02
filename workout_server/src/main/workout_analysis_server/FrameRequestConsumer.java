@@ -53,11 +53,11 @@ public class FrameRequestConsumer implements Runnable {
             frameExercise = classifierHandler.classify(bodyDataSet);
             System.out.println("Exercise: " + frameExercise);
 
-            frontendHandler.sendDisplayRequest(frameExercise);
-            //exerciseList.add(frameExercise);
+            //frontendHandler.sendDisplayRequest(frameExercise);
+            exerciseList.add(frameExercise);
 
 
-            /*
+
             switch(SetStateDecider.getSetState(currentExercise, exerciseList)) {
                 case INITIAL:
                     System.out.println("First Frame Request");
@@ -72,6 +72,7 @@ public class FrameRequestConsumer implements Runnable {
                     }
 
                     frontendHandler.sendDisplayRequest(frameExercise);
+                    System.out.println(frameAnalyzer.analyze(bodyDataSet));
                     break;
                 case SAME_SET:
                     System.out.println("Same Set -- Normal Analysis");
@@ -82,6 +83,8 @@ public class FrameRequestConsumer implements Runnable {
                     }
 
                     frontendHandler.sendDisplayRequest(frameExercise);
+
+                    System.out.println(frameAnalyzer.analyze(bodyDataSet));
                     break;
                 case NEW_SET:
                     System.out.println("New Set -- Nice job big guy");
@@ -95,12 +98,14 @@ public class FrameRequestConsumer implements Runnable {
                     currentExercise = newExercise;
 
                     frontendHandler.sendDisplayRequest(frameExercise);
+
+                    System.out.println(frameAnalyzer.analyze(bodyDataSet));
                     break;
                 case UNKNOWN:
                     System.out.println("Oopsie! Unknown State reached");
 
                     break;
-            }*/
+            }
         }
     }
 }
