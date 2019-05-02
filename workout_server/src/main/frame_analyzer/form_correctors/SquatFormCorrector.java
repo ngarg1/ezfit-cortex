@@ -11,8 +11,23 @@ public class SquatFormCorrector extends FormCorrector {
         super(Exercise.SQUAT);
     }
 
+    private static int KNEE_ANKLE_LENIENCY = 40;
+
     @Override
     public FormAnalysis analyze(BodyDataSet bodyDataSet) {
+
+        FormAnalysis FA = new FormAnalysis(Exercise.SQUAT);
+        double kneePoint = bodyDataSet.getKnee().getX();
+        double anklePoint = bodyDataSet.getAnkle().getX();
+        double kneeAngle = bodyDataSet.getKneeAngle();
+
+        if(kneePoint - anklePoint > KNEE_ANKLE_LENIENCY){
+            FA.addNotes("Get yo knees ovah yo ankles");
+        }
+        if(kneeAngle <= 90){
+            FA.addNotes("All the way down! Good!");
+        }
+
         return null;
     }
 
