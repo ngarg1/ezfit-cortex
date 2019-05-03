@@ -12,6 +12,7 @@ public class SquatFormCorrector extends FormCorrector {
     }
 
     private static int KNEE_ANKLE_LENIENCY = 40;
+    private static int TARGET_KNEE_ANGLE = 90;
 
     @Override
     public FormAnalysis analyze(BodyDataSet bodyDataSet) {
@@ -24,7 +25,7 @@ public class SquatFormCorrector extends FormCorrector {
         if(kneePoint - anklePoint > KNEE_ANKLE_LENIENCY){
             FA.addNotes("Get yo knees ovah yo ankles");
         }
-        if(kneeAngle <= 90){
+        if(kneeAngle <= TARGET_KNEE_ANGLE){
             FA.addNotes("All the way down! Good!");
         }
 
