@@ -22,14 +22,14 @@ public class SquatFormCorrector extends FormCorrector {
         double anklePoint = bodyDataSet.getAnkle().getX();
         double kneeAngle = bodyDataSet.getKneeAngle();
 
-        if(kneePoint - anklePoint > KNEE_ANKLE_LENIENCY){
+        if(Math.abs(kneePoint - anklePoint) > KNEE_ANKLE_LENIENCY){
             FA.addNotes("Get yo knees ovah yo ankles");
         }
         if(kneeAngle <= TARGET_KNEE_ANGLE){
             FA.addNotes("All the way down! Good!");
         }
 
-        return null;
+        return FA;
     }
 
     @Override
