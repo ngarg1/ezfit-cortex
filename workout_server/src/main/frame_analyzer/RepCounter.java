@@ -4,7 +4,7 @@ import common.SlidingList;
 import body_data.BodyDataSet;
 
 public abstract class RepCounter {
-    SlidingList<BodyDataSet> bodyDataList;
+    protected SlidingList<BodyDataSet> bodyDataList;
     Exercise exercise;
 
     public RepCounter(Exercise exercise) {

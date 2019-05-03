@@ -31,6 +31,14 @@ public class SlidingList<T> {
         }
     }
 
+    public T getLast(){
+        return slidingList.get(slidingList.size()-1);
+    }
+
+    public int getSize(){
+        return slidingList.size();
+    }
+
     public T get(int index) {
         return slidingList.get(index);
     }
