@@ -127,4 +127,8 @@ public class BodyDataSet {
     public double getKneeAngle(){
         return getAngle(knee, hip, ankle);
     }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
 }

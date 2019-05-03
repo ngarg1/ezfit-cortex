@@ -1,6 +1,7 @@
 package body_data;
 
 import common.BufferHandler;
+import org.apache.http.client.utils.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 
 public class BodyDataSetSerializer {
@@ -83,6 +85,8 @@ public class BodyDataSetSerializer {
 		BufferedReader httpStringReader = new BufferedReader(new StringReader(frameRequest));
 		String line = "";
 		int newLineCount = 0;
+		Date timestamp = new Date();
+
 		while(newLineCount < 1) {
 			try {
 				line = httpStringReader.readLine();
@@ -91,8 +95,16 @@ public class BodyDataSetSerializer {
 			}
 			if(line.equals("")) {
 				newLineCount++;
+			} else {
+				if(line.startsWith("Date: ")) {
+					String time = line.replaceFirst("Date: ", "");
+					timestamp = DateUtils.parseDate(time);
+				}
 			}
 		}
-		return deserializeJSON(BufferHandler.readAllLines(httpStringReader));
+
+		BodyDataSet bodyDataSet =  deserializeJSON(BufferHandler.readAllLines(httpStringReader));
+		bodyDataSet.setTimestamp(timestamp);
+		return bodyDataSet;
     }
 }

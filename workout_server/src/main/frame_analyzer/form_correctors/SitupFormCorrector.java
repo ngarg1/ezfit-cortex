@@ -16,12 +16,11 @@ public class SitupFormCorrector extends FormCorrector {
 
     @Override
     public analyses.FormAnalysis analyze(BodyDataSet bodyDataSet) {
-
-        FormAnalysis FA = new FormAnalysis(Exercise.PLANK);
+        FormAnalysis FA = new FormAnalysis(Exercise.SITUP);
         BodyDataPoint shoulder = bodyDataSet.getShoulder();
         BodyDataPoint knee = bodyDataSet.getKnee();
 
-        if( shoulder.getY() < knee.getY()+LENIENCY ){
+        if(shoulder.getY() - knee.getY() < LENIENCY){
             FA.addNotes("All the way up! Good Job!");
         }
         return FA;

@@ -56,8 +56,6 @@ public class FrameRequestConsumer implements Runnable {
             //frontendHandler.sendDisplayRequest(frameExercise);
             exerciseList.add(frameExercise);
 
-
-
             switch(SetStateDecider.getSetState(currentExercise, exerciseList)) {
                 case INITIAL:
                     System.out.println("First Frame Request");

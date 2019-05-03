@@ -1,7 +1,7 @@
 package frame_analyzer;
 
-import common.SlidingList;
 import body_data.BodyDataSet;
+import common.SlidingList;
 
 public abstract class RepCounter {
     protected SlidingList<BodyDataSet> bodyDataList;
